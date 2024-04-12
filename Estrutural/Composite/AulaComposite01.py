@@ -105,3 +105,37 @@ class Container(Componente):
         for componente in self.arrayComponente:
             conteudo += f"\t{componente.obterConteudo()}\n"
         return conteudo
+    
+# Exemplo de Aplicação ---------------------------------------------------------------
+# Criação dos objetos e execução do programa:
+
+# Criação de itens individuais.
+maca = Item('Maçã', 8.99)
+laranja = Item('Laranja', 3.69)
+uva = Item('Uva', 9.98)
+banana = Item('Banana', 6.99)
+abacate = Item('Abacate', 4.91)
+
+# Adicionando itens ao carrinho de compras.
+produto = Container('Carrinho de Compra')
+produto.adicionar(maca)
+produto.adicionar(laranja)
+produto.adicionar(uva)
+produto.adicionar(banana)
+produto.adicionar(abacate)
+
+# Criando um pedido e adicionando o carrinho de compras e a embalagem ao pedido.
+pedido = Container('Pedido Fechado')
+pedido.adicionar(produto)
+pedido.adicionar(Item('Embalagem', 1.90))
+
+# Criando um pedido completo e adicionando o pedido e o frete ao pedido completo.
+pedidoEntrega = Container('Pedido Completo')
+pedidoEntrega.adicionar(pedido)
+pedidoEntrega.adicionar(Item('Frete SP', 35.00))
+
+# Imprimindo o conteúdo e o preço total do carrinho de compras, do pedido e do pedido completo.
+print(produto.obterConteudo())
+print(pedido.obterConteudo())
+print(pedidoEntrega.obterConteudo())
+print(f"Preço Total R${pedidoEntrega.obterPreco():.2f}")
